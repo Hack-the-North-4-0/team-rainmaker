@@ -32,7 +32,7 @@ export default ({ dispatch, gameState, allowedTime }) => {
       <Countdown total={allowedTime} current={remainingTime} />
 
       <p className="game__content__question">
-        {currentQuestion.question}
+        {currentQuestion.question}?
       </p>
 
       <ul className="game__question-answers">
