@@ -13,7 +13,7 @@ export default ({ dispatch, gameState }) => {
     <h2>Game Round {round}</h2>
 
     <p>
-      {currentQuestion.text}
+      {currentQuestion.question}
     </p>
 
     <ul className="game__question-answers">

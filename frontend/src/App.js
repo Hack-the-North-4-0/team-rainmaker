@@ -55,17 +55,17 @@ function App() {
     );
   }
 
-  if (gameState.completed) {
+  if (gameState.complete) {
     return (
       <div className="App">
-        <Completed gameState={gameState} />
+        <Completed gameState={gameState} dispatch={dispatch} />
       </div>
     );
   }
 
   return (
     <div className="App">
-      <GameView dispatch={dispatch} gameState={gameState}></GameView>
+      <GameView dispatch={dispatch} gameState={gameState} />
     </div>
   );
 }
