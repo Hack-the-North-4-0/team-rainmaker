@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import Countdown from './countdown';
+import Countdown from '../countdown';
 
 import './game.css';
 
-export default ({ dispatch, gameState }) => {
+export default ({ dispatch, gameState, allowedTime }) => {
   const { currentQuestion, round } = gameState;
+  const [remainingTime, setTimeLeft] = useState(allowedTime);
 
-  const answerQuestion = () => {
-    dispatch({ event: 'answer-question' });
+  useEffect(() => {
+    setTimeout(() => {
+      const newTimeleft = remainingTime - 1;
+
+      if (newTimeleft <= 0) {
+        dispatch({ event: 'answer-question' });
+        return;
+      }
+
+      setTimeLeft(newTimeleft);
+    }, 1000);
+  });
+
+  const answerQuestion = (answer, remainingTime) => {
+    dispatch({ event: 'answer-question', answer, remainingTime });
   };
-
-  const allowedTime = 10;
-  const remainingTime = 7;
 
   return <div className="game-view">
     <div className="game__content">
@@ -27,7 +38,7 @@ export default ({ dispatch, gameState }) => {
       <ul className="game__question-answers">
         {currentQuestion.answers.map(({ answer }, i) => {
           return <li key={`answer-${gameState.round}-${i}`} className="game__question-answers__item" onClick={() => {
-            answerQuestion(i);
+            answerQuestion(i, remainingTime);
           }}>
             <label>{answer}</label>
           </li>;

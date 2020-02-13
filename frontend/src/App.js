@@ -3,6 +3,7 @@ import './App.css';
 
 import Home from './components/home';
 import GameView from './components/game-view';
+import WaitView from './components/wait-view';
 import Completed from './components/completed';
 import TopBar from './components/top-bar';
 
@@ -53,7 +54,7 @@ const questions = [
 const generateNewGame = () => {
   const remainingQuestions = [...questions];
 
-  return { round: 1, remainingQuestions, currentQuestion: remainingQuestions.shift() };
+  return { round: 1, remainingQuestions, currentQuestion: remainingQuestions.shift(), answers: [] };
 };
 
 function App() {
@@ -65,13 +66,34 @@ function App() {
     }
 
     if (event === 'answer-question') {
-      const [currentQuestion, ...remainingQuestions] = state.remainingQuestions;
+      const [nextQuestion, ...remainingQuestions] = state.remainingQuestions;
 
-      if (!currentQuestion) {
-        return { ...state, complete: true };
-      }
+      const correctAnswerIndex = state.currentQuestion.answers.reduce((index, { correct }, i) => {
+        if (index < 0 && correct) {
+          return i;
+        }
 
-      return { ...state, round: state.round + 1, remainingQuestions, currentQuestion };
+        return index;
+      }, -1);
+
+      const answers = [
+        ...state.answers,
+        { ...rest, correct: correctAnswerIndex === rest.answer },
+      ];
+
+      return {
+        ...state,
+        remainingQuestions,
+        nextQuestion,
+        currentQuestion: undefined,
+        answers,
+        complete: nextQuestion ? false : true,
+      };
+    }
+
+    if (event === 'wait-complete') {
+      console.log(state.answers);
+      return { ...state, round: state.round + 1, nextQuestion: undefined, currentQuestion: state.nextQuestion };
     }
 
     if (event === 'reset') {
@@ -99,10 +121,19 @@ function App() {
     );
   }
 
+  if (!gameState.currentQuestion) {
+    return (
+      <div className="App">
+        <TopBar />
+        <WaitView gameState={gameState} dispatch={dispatch} allowedTime={15} />
+      </div>
+    );
+  }
+
   return (
     <div className="App">
       <TopBar />
-      <GameView dispatch={dispatch} gameState={gameState} />
+      <GameView dispatch={dispatch} gameState={gameState} allowedTime={10} />
     </div>
   );
 }

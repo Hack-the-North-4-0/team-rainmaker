@@ -29,12 +29,6 @@
   padding: 10px;
 }
 
-.game__countdown {
-  padding: 10px;
-  width: 50%;
-  margin: 0 auto;
-}
-
 .game__content__question {
   font-size: 1.5em;
 }
