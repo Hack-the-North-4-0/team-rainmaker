@@ -9,7 +9,7 @@ export default ({ dispatch, gameState }) => {
     dispatch({ event: 'answer-question' });
   };
 
-  return <div>
+  return <div className="game-view">
     <h2>Game Round {round}</h2>
 
     <p>
