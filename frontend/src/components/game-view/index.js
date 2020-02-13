@@ -10,18 +10,21 @@ export default ({ dispatch, gameState }) => {
   };
 
   return <div className="game-view">
-    <h2>Game Round {round}</h2>
+    <div className="game__content">
+      <h2>Game Round {round}</h2>
 
-    <p>
-      {currentQuestion.question}
-    </p>
+      <p>
+        {currentQuestion.question}
+      </p>
 
-    <ul className="game__question-answers">
-      {currentQuestion.answers.map(({ answer }, i) => {
-        return <li key={`answer-${gameState.round}-${i}`}><label><input type="radio" name="question-answer" value={`answer-${i + 1}`} /> {answer}</label></li>;
-      })}
-    </ul>
-
-    <button onClick={() => answerQuestion()}>Answer</button>
+      <ul className="game__question-answers">
+        {currentQuestion.answers.map(({ answer }, i) => {
+          return <li key={`answer-${gameState.round}-${i}`}><label><input type="radio" name="question-answer" value={`answer-${i + 1}`} /> {answer}</label></li>;
+        })}
+      </ul>
+    </div>
+    <div className="game__buttons">
+      <button onClick={() => answerQuestion()}>Answer</button>
+    </div>
   </div>;
 };

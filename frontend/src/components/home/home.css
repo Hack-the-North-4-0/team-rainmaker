@@ -1,0 +1,13 @@
+.home__content {
+  padding: 5px;
+}
+
+.home__name {
+  display: flex;;
+}
+
+.home__name input {
+  flex-grow: 1;
+  font-size: 1.7em;
+  margin: 20px 0 20px 0;
+}

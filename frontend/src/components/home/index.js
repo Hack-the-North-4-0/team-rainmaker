@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 
+import './home.css';
+
 export default ({ dispatch }) => {
   const [name, setName] = useState('');
   const startGame = () => {
     dispatch({ event: 'game-start', name });
   };
 
-  return <div>
-    <h2>Welcome! </h2>
+  return <div className="home__content">
+    <h2>Welcome!</h2>
     <div>Please enter your name below.</div>
-    <div>
+    <div className="home__name">
       <input
         type="text"
         placeholder="Your name"
