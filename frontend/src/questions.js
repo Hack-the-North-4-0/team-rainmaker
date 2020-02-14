@@ -2,10 +2,10 @@ const allQuestions = [
   {
     question: 'Which of these can you buy with a days wage',
     answers: [
-      { answer: 'Takeaway', correct: false },
+      { answer: 'Takeaway', correct: true },
       { answer: 'New Phone', correct: false },
       { answer: 'New Nike Airs', correct: false },
-      { answer: 'Second hand moped', correct: true },
+      { answer: 'Second hand moped', correct: false },
     ],
   },
   {
