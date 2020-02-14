@@ -89,7 +89,6 @@ function App() {
       const answered = typeof rest.answer !== 'undefined';
       const correct = correctAnswerIndex === rest.answer;
       const newAnswer = { ...rest, correct, outcome: getOutcome(rest, answered, correct) };
-      console.log(newAnswer);
 
       return {
         ...state,
