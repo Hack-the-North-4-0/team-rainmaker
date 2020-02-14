@@ -5,8 +5,13 @@ import { faPiggyBank } from '@fortawesome/free-solid-svg-icons';
 
 import './bank-summary.css';
 
-export default ({ ledger, showAll = false }) => {
-  const ledgerElements = showAll ? ledger : ledger.slice(-5);
+export default ({ ledger, filterToRound, showAll = false }) => {
+  const ledgerElements = showAll
+    ? ledger
+    : filterToRound
+      ? ledger.filter(({ round }) => round === filterToRound)
+      : ledger.slice(-5);
+
   return <>
     <div className="bank-summary">
       <div className="bank-summary__icon">

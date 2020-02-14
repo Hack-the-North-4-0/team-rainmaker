@@ -40,7 +40,7 @@ export default ({ dispatch, gameState, allowedTime }) => {
         {lastAnswerMessage(answers[answers.length - 1])}
       </p>
 
-      <BankSummary ledger={gameState.ledger} />
+      <BankSummary filterToRound={gameState.round} ledger={gameState.ledger} />
     </div>
   </div>;
 };
