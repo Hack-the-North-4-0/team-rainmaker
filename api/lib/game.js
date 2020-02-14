@@ -3,7 +3,7 @@ const { createApplication } = require('tegud-lambda-api');
 const app = createApplication();
 
 app
-  .addHandler('getTeamUsage', async (req, res) => {
+  .addHandler('createGame', async (req, res) => {
     return res.ok();
   });
 
