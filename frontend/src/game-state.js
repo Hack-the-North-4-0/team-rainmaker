@@ -34,17 +34,17 @@ const getOutcome = ({ remainingTime }, answered, correct) => {
   return 'bad';
 };
 
-const getAmountForAnswer = ({ timeChallenge }) => {
-  if (timeChallenge === 'great') {
+const getAmountForAnswer = ({ outcome }) => {
+  if (outcome === 'great') {
     return 100;
   }
 
-  if (timeChallenge === 'good') {
+  if (outcome === 'good') {
     return 50;
   }
   
 
-  if (timeChallenge === 'bad') {
+  if (outcome === 'bad') {
     return 20;
   }
 
