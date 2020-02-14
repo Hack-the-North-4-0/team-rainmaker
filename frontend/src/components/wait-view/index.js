@@ -20,27 +20,15 @@ export default ({ dispatch, gameState, allowedTime }) => {
     }, 1000);
   });
 
-  const lastAnswerMessage = ({ outcome }) => {
-    if (outcome === 'no-answer') {
-      return 'Sorry, you were too slow answering!';
-    }
-
-    if (outcome === 'wrong') {
-      return 'Oh no! I\'m afraid that answer wasn\'t right!';
-    }
-
-    if (outcome === 'great') {
-      return 'That was a super fast, super correct, great job!';
-    }
-    
-    if (outcome === 'good') {
-      return 'That was pretty fast, good job';
-    }
-
-    if (outcome === 'bad') {
-      return 'You were right, but you could have been faster!';
-    }
+  const outcomeMessages = {
+    'no-answer': 'Sorry, you were too slow answering!',
+    wrong: 'Oh no! I\'m afraid that answer wasn\'t right!',
+    great: 'That was a super fast, super correct, great job!',
+    good: 'That was pretty fast, good job',
+    bad: 'You were right, but you could have been faster!'
   };
+
+  const lastAnswerMessage = ({ outcome }) => outcomeMessages[outcome];
 
   return <div className="game-view">
     <div className="game__content">

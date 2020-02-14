@@ -1,0 +1,14 @@
+.bank-summary {
+  display: flex;
+  padding: 5px;
+}
+
+.bank-summary__icon {
+  font-size: 72px;
+}
+
+.bank-summary__amount {
+  font-size: 2em;
+  align-self: center;
+  padding-left: 20px;
+}
