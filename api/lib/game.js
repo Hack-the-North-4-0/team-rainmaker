@@ -30,18 +30,26 @@ const insertDocument = (db, collectionName, doc) => new Promise((resolve, reject
       return;
     }
 
-    console.log(result);
+    resolve();
   });
 });
 
+const getAllGames = (db, collectionName) => new Promise((resolve, reject) => {
+  const collection = db.collection(collectionName);
+  collection.find((err, result) => {
+    if (err) {
+      reject(err);
+      return;
+    }
+
+    resolve(result);
+  });
+});
 
 app
   .addHandler('createGame', async (req, res) => {
-    console.log('IN');
     const client = await connectToMongo(process.env.mongo_url);
     const db = connectToDb(client, process.env.mongo_db);
-
-    console.log('Inserting document');
 
     await insertDocument(db, 'game-state', {
       round: 0,
@@ -49,6 +57,14 @@ app
     });
 
     return res.ok();
+  })
+  .addHandler('listGames', async (req, res) => {
+    const client = await connectToMongo(process.env.mongo_url);
+    const db = connectToDb(client, process.env.mongo_db);
+
+    const games = await getAllGames(db, 'game-state');
+
+    return res.ok({ games });
   });
 
 module.exports = app;
