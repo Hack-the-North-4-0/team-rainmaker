@@ -7,6 +7,7 @@ const connectToMongo = (url) => new Promise((resolve, reject) => {
   MongoClient.connect(url, (err, client) => {
     if (err) {
       console.log(`Error connecting to mongo`);
+      console.log(err.message);
       reject(err);
       return;
     }
