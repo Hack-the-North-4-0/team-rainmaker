@@ -1,0 +1,27 @@
+.results-container {
+  padding: 5px;
+}
+
+.results-message {
+  font-size: 1.5em;
+  margin: 5px 0;
+}
+
+.results-message {
+  display: flex;
+  border-bottom: solid 1px #000;
+  padding-bottom: 10px;
+}
+
+.results-message__icon {
+  font-size: 64px;
+  padding-left: 10px;
+}
+
+.results-message__text {
+  padding-left: 20px;
+}
+
+.results-buttons {
+  margin-top: 10px;
+}
