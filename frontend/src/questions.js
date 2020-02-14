@@ -100,4 +100,4 @@ function getRandomQuestions(number) {
   return [...chosenQuestions];
 }
 
-export default () => getRandomQuestions(1);
+export default () => getRandomQuestions(10);
