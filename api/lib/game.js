@@ -38,14 +38,15 @@ const getAllGames = (db, collectionName) => new Promise((resolve, reject) => {
   console.log('getting games');
 
   const collection = db.collection(collectionName);
-  collection.find((err, result) => {
+  collection.find((err, cursor) => {
     if (err) {
       reject(err);
       return;
     }
-    console.log(result);
 
-    resolve(result);
+    const results = await cursor.toArray();
+
+    resolve(results);
   });
 });
 
