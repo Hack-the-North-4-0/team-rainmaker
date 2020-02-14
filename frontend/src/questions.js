@@ -41,7 +41,7 @@ const allQuestions = [
       { answer: 'Only when I own my own home', correct: false },
       { answer: 'When my bin is full and needs taking away', correct: false },
     ],
-  }
+  },
  {
     question: 'What happens when you spend more than you earn as income',
     answers: [
@@ -89,6 +89,13 @@ const allQuestions = [
   },
 ];
 
-export default () => [
-  ...allQuestions,
-];
+function getRandomQuestions(number) {
+  let chosenQuestions = new Set();
+  while(chosenQuestions.size < number) {
+    const tmp = allQuestions[Math.floor(Math.random() * allQuestions.length)];
+    chosenQuestions.add(tmp);
+  }
+  return [...chosenQuestions];
+}
+
+export default () => getRandomQuestions(10);
