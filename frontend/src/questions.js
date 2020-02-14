@@ -29,9 +29,9 @@ const allQuestions = [
   {
     question: 'You are given £20 for your birthday, what\'s the best way to turn this into £30',
     answers: [
-      { answer: 'Stick it under a mattress', correct: true },
+      { answer: 'Stick it under a mattress', correct: false },
       { answer: 'Spend it', correct: false },
-      { answer: 'Save it with a bank', correct: false },
+      { answer: 'Save it with a bank', correct: true },
       { answer: 'Lottery tickets', correct: false },
     ],
   },
@@ -56,7 +56,7 @@ const allQuestions = [
      {
     question: 'What is a salary',
     answers: [
-      { answer: 'A vegetable', correct: true },
+      { answer: 'A vegetable', correct: false },
       { answer: 'Regular income for work you do', correct: true },
       { answer: 'Money from the government', correct: false },
       { answer: 'Money you pay for your car', correct: false },
@@ -65,7 +65,7 @@ const allQuestions = [
      {
     question: 'What is disposable income',
     answers: [
-      { answer: 'Money you can throw away', correct: true },
+      { answer: 'Money you can throw away', correct: false },
       { answer: 'Money you have to spend fast', correct: false },
       { answer: 'Money left after you\'ve bought essentials', correct: true },
       { answer: 'Money you spend on rent', correct: false },
