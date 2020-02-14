@@ -5,6 +5,10 @@ provider:
   runtime: nodejs12.x
   region: eu-west-1
 
+environment:
+  mongo_url: ${env:mongo_url}
+  mongo_db: ${env:mongo_db}
+
 functions:
   createGame:
     handler: handler.createGame

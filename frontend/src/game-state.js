@@ -35,7 +35,7 @@ const getOutcome = ({ remainingTime }, answered, correct) => {
 };
 
 const prizeByOutcome = {
-  great: 100,
+  great: 80,
   good: 50,
   bad: 20,
 };
@@ -52,7 +52,7 @@ const updateLedger = (ledger, lastAnswer) => {
   return [
     ...ledger,
     { type: 'deposit', description: 'Pay', amount: getAmountForAnswer(lastAnswer) },
-    { type: 'withdrawal', description: 'Outgoings', amount: -100 }
+    { type: 'withdrawal', description: 'Outgoings', amount: -45 }
   ]
 };
 
@@ -65,6 +65,8 @@ export const gameStateReduce = (state, { event, ...rest }) => {
 
   if (event === 'answer-question') {
     const [nextQuestion, ...remainingQuestions] = state.remainingQuestions;
+
+    console.log(state.currentQuestion.answers, rest.answer);
 
     const correctAnswerIndex = state.currentQuestion.answers.reduce((index, { correct }, i) => {
       if (index < 0 && correct) {
