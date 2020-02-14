@@ -4,7 +4,7 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './countdown.css';
 
-export default ({ total, current, width = '50%', text }) => {
+export default ({ total, current, width = '40%', text }) => {
   if (text) {
     return <div className="game__countdown-with-text">
       <div style={{ width }}>
