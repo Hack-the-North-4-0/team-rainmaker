@@ -44,8 +44,8 @@ const questions = [
   {
     question: 'When will you pay council tax',
     answers: [
-      { answer: 'When you are 18', correct: true },
-      { answer: 'When I live in my own place', correct: false },
+      { answer: 'When you are 18', correct: false },
+      { answer: 'When I live in my own place', correct: true },
       { answer: 'Only when I own my own home', correct: false },
     ],
   }
@@ -54,7 +54,59 @@ const questions = [
 const generateNewGame = () => {
   const remainingQuestions = [...questions];
 
-  return { round: 1, remainingQuestions, currentQuestion: remainingQuestions.shift(), answers: [] };
+  return {
+    round: 1,
+    remainingQuestions,
+    currentQuestion: remainingQuestions.shift(),
+    answers: [],
+    ledger: [
+      { type: 'deposit', description: 'Initial Deposit', amount: 1000 },
+    ]
+  };
+};
+
+const getOutcome = ({ remainingTime }, answered, correct) => {
+  if (!answered) {
+    return 'no-answer';
+  }
+
+  if (!correct) {
+    return 'wrong';
+  }
+
+  if (remainingTime > 7) {
+    return 'great';
+  }
+
+  if (remainingTime > 3) {
+    return 'good';
+  }
+
+  return 'bad';
+};
+
+const getAmountForAnswer = ({ correct, timeChallenge }) => {
+  if (!correct) {
+    return 10;
+  }
+
+  if (timeChallenge === 'great') {
+    return 100;
+  }
+
+  if (timeChallenge === 'good') {
+    return 50;
+  }
+
+  return 20;
+};
+
+const updateLedger = (ledger, lastAnswer) => {
+  return [
+    ...ledger,
+    { type: 'deposit', description: 'Pay', amount: getAmountForAnswer(lastAnswer) },
+    { type: 'withdrawal', description: 'Outgoings', amount: -25 }
+  ]
 };
 
 function App() {
@@ -76,23 +128,26 @@ function App() {
         return index;
       }, -1);
 
-      const answers = [
-        ...state.answers,
-        { ...rest, correct: correctAnswerIndex === rest.answer },
-      ];
+      const answered = typeof rest.answer !== 'undefined';
+      const correct = correctAnswerIndex === rest.answer;
+      const newAnswer = { ...rest, correct, outcome: getOutcome(rest, answered, correct) };
+      console.log(newAnswer);
 
       return {
         ...state,
+        ledger: updateLedger(state.ledger, newAnswer),
         remainingQuestions,
         nextQuestion,
         currentQuestion: undefined,
-        answers,
+        answers: [
+          ...state.answers,
+          newAnswer,
+        ],
         complete: nextQuestion ? false : true,
       };
     }
 
     if (event === 'wait-complete') {
-      console.log(state.answers);
       return { ...state, round: state.round + 1, nextQuestion: undefined, currentQuestion: state.nextQuestion };
     }
 
