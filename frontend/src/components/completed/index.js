@@ -60,7 +60,7 @@ export default ({ gameState, dispatch }) => {
   return <div className="results-container">
     <h2>Congratulations! </h2>
     <ResultPanel gameState={gameState} />
-    <div>
+    <div className="results-buttons">
       <button onClick={() => dispatch({ event: 'reset' })}>Start New Game</button>
     </div>
   </div>;
