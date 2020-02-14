@@ -7,8 +7,9 @@ provider:
 
 functions:
   hello:
-    handler: handler.hello
-    events:
-      - http:
+  handler: handler.getDetailedTeamUsage
+  events:
+    - http:
         path: /
         method: get
+        cors: true

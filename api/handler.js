@@ -1,18 +1,8 @@
-'use strict';
+const { createApplication } = require('tegud-lambda-api');
+const cors = require('cors');
+const app = createApplication();
 
-module.exports.hello = async event => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
+app
+  .use(cors());
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
-};
+module.exports = app.export();
