@@ -33,6 +33,7 @@ const insertDocument = (db, collectionName, doc) => new Promise((resolve, reject
 
 app
   .addHandler('createGame', async (req, res) => {
+    console.log('IN');
     const client = await connectToMongo(process.env.mongo_url);
     const db = connectToDb(client, process.env.mongo_db);
 
