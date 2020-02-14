@@ -6,10 +6,10 @@ provider:
   region: eu-west-1
 
 functions:
-  hello:
-    handler: handler.getDetailedTeamUsage
+  createGame:
+    handler: handler.createGame
     events:
       - http:
-          path: /
-          method: get
+          path: /games
+          method: post
           cors: true
