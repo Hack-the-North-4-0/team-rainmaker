@@ -5,7 +5,8 @@ import { faPiggyBank } from '@fortawesome/free-solid-svg-icons';
 
 import './bank-summary.css';
 
-export default ({ ledger }) => {
+export default ({ ledger, showAll = false }) => {
+  const ledgerElements = showAll ? ledger : ledger.slice(-5);
   return <>
     <div className="bank-summary">
       <div className="bank-summary__icon">
@@ -17,7 +18,7 @@ export default ({ ledger }) => {
       </div>
     </div>
     <ul className="bank-summary__transactions">
-      {ledger.slice(-5).reverse().map(({ amount, description }, i) => <li className="bank-summary__transactions__item" key={`transaction-${i}`}>
+      {ledgerElements.reverse().map(({ amount, description }, i) => <li className="bank-summary__transactions__item" key={`transaction-${i}`}>
         <div className="bank-summary__transactions__item__description">
           {description}
         </div>

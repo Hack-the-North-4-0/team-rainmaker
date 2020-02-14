@@ -66,8 +66,6 @@ export const gameStateReduce = (state, { event, ...rest }) => {
   if (event === 'answer-question') {
     const [nextQuestion, ...remainingQuestions] = state.remainingQuestions;
 
-    console.log(state.currentQuestion.answers, rest.answer);
-
     const correctAnswerIndex = state.currentQuestion.answers.reduce((index, { correct }, i) => {
       if (index < 0 && correct) {
         return i;
