@@ -21,8 +21,8 @@ jobs:
       run: npm ci
     - name: serverless deploy
       uses: tegud/serverless-github-action@1.56.1
-      working-directory: ${{env.working-directory}}
       with:
+        working-directory: ${{env.working-directory}}
         command: deploy
         args: "--stage=dev"
       env:
