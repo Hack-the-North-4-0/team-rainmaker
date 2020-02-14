@@ -16,3 +16,10 @@ functions:
           path: /games
           method: post
           cors: true
+  listGames:
+    handler: handler.listGames
+    events:
+      - http:
+          path: /games
+          method: get
+          cors: true
