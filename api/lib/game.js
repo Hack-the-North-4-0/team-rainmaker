@@ -36,7 +36,9 @@ app
     const client = await connectToMongo(process.env.mongo_url);
     const db = connectToDb(client, process.env.mongo_db);
 
-    insertDocument(db, 'game-state', {
+    console.log('Inserting document');
+
+    await insertDocument(db, 'game-state', {
       round: 0,
       remainingQuestions: [],
     });
