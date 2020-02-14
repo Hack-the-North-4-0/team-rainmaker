@@ -35,12 +35,15 @@ const insertDocument = (db, collectionName, doc) => new Promise((resolve, reject
 });
 
 const getAllGames = (db, collectionName) => new Promise((resolve, reject) => {
+  console.log('getting games');
+
   const collection = db.collection(collectionName);
   collection.find((err, result) => {
     if (err) {
       reject(err);
       return;
     }
+    console.log(result);
 
     resolve(result);
   });
