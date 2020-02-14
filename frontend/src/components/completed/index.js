@@ -19,7 +19,7 @@ const endMessage = (ledger) => {
   //   return '';
   // }
 
-  if (total > 0) {
+  if (total >= 0) {
     return 'Great effort - you got things right but can be faster next time! Well done!';
   }
 
