@@ -11,9 +11,9 @@ const connectToMongo = (url) => new Promise((resolve, reject) => {
       reject(err);
       return;
     }
-   
+
     console.log(`Connected to mongo`);
-   
+
     resolve(client);
   })
 });
