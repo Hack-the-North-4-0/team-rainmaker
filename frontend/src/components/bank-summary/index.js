@@ -11,6 +11,7 @@ export default ({ ledger, filterToRound, showAll = false }) => {
     : filterToRound
       ? ledger.filter(({ round }) => round === filterToRound)
       : ledger.slice(-5);
+  const total = ledger.reduce((total, { amount = 0 }) => total + amount, 0);
 
   return <>
     <div className="bank-summary">
@@ -19,7 +20,9 @@ export default ({ ledger, filterToRound, showAll = false }) => {
       </div>
       <div className="bank-summary__amount">
         Your Balance:<br/>
-        £{ledger.reduce((total, { amount = 0 }) => total + amount, 0)}
+        <span style={{ color: total >= 0 ? 'black' : 'red' }}>
+          £{Math.abs(total)} {total >= 0 ? '' : <b>In Debt</b>}
+        </span>
       </div>
     </div>
     <ul className="bank-summary__transactions">

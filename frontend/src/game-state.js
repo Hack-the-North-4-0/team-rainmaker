@@ -9,7 +9,7 @@ const generateNewGame = () => {
     currentQuestion: remainingQuestions.shift(),
     answers: [],
     ledger: [
-      { type: 'deposit', round: 1, description: 'Initial Deposit', amount: 200 },
+      { type: 'deposit', round: 1, description: 'Initial Deposit', amount: 10 },
     ]
   };
 };
@@ -51,8 +51,8 @@ const getAmountForAnswer = ({ outcome }) => {
 const updateLedger = (ledger, round, lastAnswer) => {
   return [
     ...ledger,
-    { type: 'deposit', round, description: 'Pay', amount: getAmountForAnswer(lastAnswer) },
-    { type: 'withdrawal', round, description: 'Outgoings', amount: -45 }
+    { type: 'deposit', round, description: `Round ${round} Pay`, amount: getAmountForAnswer(lastAnswer) },
+    { type: 'withdrawal', round, description: `Round ${round} Outgoings`, amount: -45 }
   ]
 };
 
