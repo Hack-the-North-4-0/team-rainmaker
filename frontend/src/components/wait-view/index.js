@@ -23,7 +23,7 @@ export default ({ dispatch, gameState, allowedTime }) => {
   const outcomeMessages = {
     'no-answer': 'Sorry, you were too slow answering!',
     wrong: 'Oh no! I\'m afraid that answer wasn\'t right!',
-    great: 'That was a super fast, super correct, great job!',
+    great: 'That was a super fast, super correct answer, great job!',
     good: 'That was pretty fast, good job',
     bad: 'You were right, but you could have been faster!'
   };

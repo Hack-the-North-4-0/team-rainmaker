@@ -34,18 +34,15 @@ const getOutcome = ({ remainingTime }, answered, correct) => {
   return 'bad';
 };
 
+const prizeByOutcome = {
+  great: 100,
+  good: 50,
+  bad: 20,
+};
+
 const getAmountForAnswer = ({ outcome }) => {
-  if (outcome === 'great') {
-    return 100;
-  }
-
-  if (outcome === 'good') {
-    return 50;
-  }
-  
-
-  if (outcome === 'bad') {
-    return 20;
+  if (typeof prizeByOutcome[outcome] !== 'undefined') {
+    return prizeByOutcome[outcome];
   }
 
   return 10;
