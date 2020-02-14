@@ -12,3 +12,21 @@
   align-self: center;
   padding-left: 20px;
 }
+
+.bank-summary__transactions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #000;
+}
+
+.bank-summary__transactions__item {
+  padding: 5px;
+  border-bottom: 1px solid #000;
+  display: flex;
+  font-size: 1.1em;
+}
+
+.bank-summary__transactions__item__amount {
+  margin-left: auto;
+}

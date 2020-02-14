@@ -34,7 +34,7 @@ export default ({ dispatch, gameState, allowedTime }) => {
     <div className="game__content">
       <h2>Round {round} Complete</h2>
 
-      <Countdown total={allowedTime} current={remainingTime} />
+      <Countdown total={allowedTime} current={remainingTime} width="30%" text="Time until next round" />
 
       <p className="game__content__question">
         {lastAnswerMessage(answers[answers.length - 1])}

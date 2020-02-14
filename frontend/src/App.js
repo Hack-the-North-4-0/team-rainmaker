@@ -34,7 +34,7 @@ function App() {
     return (
       <div className="App">
         <TopBar />
-        <WaitView gameState={gameState} dispatch={dispatch} allowedTime={15} />
+        <WaitView gameState={gameState} dispatch={dispatch} allowedTime={10} />
       </div>
     );
   }

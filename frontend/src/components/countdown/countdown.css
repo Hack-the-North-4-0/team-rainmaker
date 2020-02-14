@@ -3,3 +3,15 @@
   width: 50%;
   margin: 0 auto;
 }
+
+.game__countdown-with-text {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.game__countdown__text {
+  align-self: center;
+  padding-left: 10px;
+  font-size: 2em;
+}
