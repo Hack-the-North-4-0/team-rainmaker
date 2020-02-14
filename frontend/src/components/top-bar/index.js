@@ -4,6 +4,6 @@ import './top-bar.css';
 
 export default () => {
   return <div className="game__top-bar">
-    £houghtnite
+    thoughtnit£
   </div>;
 };
