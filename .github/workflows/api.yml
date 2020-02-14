@@ -19,12 +19,9 @@ jobs:
     - name: install
       working-directory: ${{env.working-directory}}
       run: npm ci
-    - name: serverless deploy
-      uses: tegud/serverless-github-action@1.56.1
-      with:
-        working-directory: ${{env.working-directory}}
-        command: deploy
-        args: "--stage=dev"
+    - name: deploy
+      working-directory: ${{env.working-directory}}
+      run: npx serverless deploy --stage=dev
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
