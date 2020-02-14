@@ -43,10 +43,7 @@ const getAllGames = (db, collectionName) => new Promise((resolve, reject) => {
       reject(err);
       return;
     }
-
-    const results = await cursor.toArray();
-
-    resolve(results);
+    cursor.toArray().then((results) => resolve(results));
   });
 });
 
