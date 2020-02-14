@@ -4,7 +4,7 @@ const { MongoClient } = require('mongodb');
 const app = createApplication();
 
 const connectToMongo = (url) => new Promise((resolve, reject) => {
-  MongoClient.connect(url, (err, client) => {
+  MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
     if (err) {
       console.log(`Error connecting to mongo`);
       console.log(err.message);
